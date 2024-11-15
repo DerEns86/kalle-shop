@@ -1,0 +1,23 @@
+
+@if(product){
+
+<div class="card border-0">
+  <div class="card-img">
+  <img [src]="product.image" class="card-img-top " alt="{{product.title}}">
+  </div>
+  <div class="card-body">
+    <h5 class="card-title" style="text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;"
+    >{{ product.title }}</h5>
+    <p class="card-text">{{ product.price }}€</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div>
+
+
+} @else {
+<p>No product found</p>
+}
+
+
