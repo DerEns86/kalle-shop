@@ -1,9 +1,9 @@
 .card {
-  .card-img {
+  .product-img {
     overflow: hidden;
 
     img {
-      height: 200px;
+      height: 300px;
       object-fit: scale-down;
       width: 100%;
       transition: all 0.5s ease;
@@ -11,9 +11,10 @@
   }
 
   &:hover {
-    .card-img > img {
+    .product-img > img {
       scale: 1.25;
       transform: translateY(10%);
     }
   }
 }
+

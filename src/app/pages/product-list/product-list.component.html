@@ -1,8 +1,8 @@
-<div class="container">
-  <div class="row justify-content-center" style="row-gap: 24px">
+<div class="container-lg pt-5">
+  <div class="row px-xl-5 pb-3">
     @if (products$ | async; as products) {
       @for (product of products; track $index) {
-        <div class="col-10 col-md-4 col-lg-3">
+        <div class="col-lg-3 col-md-6 col-sm-12 pb-1">
           <app-product-card [product]="product"></app-product-card>
         </div>
       }
