@@ -1,0 +1,31 @@
+.hero-section {
+  position: relative;
+  height: 400px;
+  overflow: hidden;
+}
+
+.hero-img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  color: white;
+  text-align: center;
+  font-family: var(--secondary-font), serif;
+}
+
+.hero-overlay h3, .hero-overlay h4 {
+  z-index: 3;
+}
