@@ -4,11 +4,12 @@ import { AsyncPipe, CommonModule } from '@angular/common';
 import { Observable } from 'rxjs';
 import { ProductInterface } from '../../models/product.interface';
 import { ProductCardComponent } from '../../components/product-card/product-card.component';
+import { HeroComponent } from '../../components/hero/hero.component';
 
 @Component({
   selector: 'app-product-list',
   standalone: true,
-  imports: [ProductCardComponent, AsyncPipe, CommonModule],
+  imports: [ProductCardComponent, AsyncPipe, CommonModule, HeroComponent],
   templateUrl: './product-list.component.html',
   styleUrl: './product-list.component.scss',
 })
