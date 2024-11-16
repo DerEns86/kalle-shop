@@ -1,0 +1,15 @@
+.cat-item,
+.product-item {
+  .cat-img img,
+  .product-img img {
+    transition: 0.5s;
+  }
+
+  &:hover {
+    .cat-img img,
+    .product-img img {
+      transform: scale(1.2);
+    }
+  }
+}
+

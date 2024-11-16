@@ -1,0 +1,18 @@
+<div class="container-lg">
+  <div class="row px-xl-5 pb-3">
+
+    @for (category of categories; track $index) {
+
+      <div class="col-lg-3 col-md-6 pb-1">
+        <div class="cat-item d-flex flex-column border mb-4" style="padding: 10px;">
+          <p class="text-end text-muted">15 Products</p>
+          <a href="" class="cat-img position-relative overflow-hidden mb-3">
+            <img class="img-fluid" src="/assets/img/cat-placeholder.jpg" alt="">
+          </a>
+          <h5 class="font-weight-semi-bold m-0 text-capitalize">{{ category }}</h5>
+        </div>
+      </div>
+
+    }
+  </div>
+</div>
