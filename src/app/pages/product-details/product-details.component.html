@@ -1,57 +1,57 @@
 <section>
-  <div class="container-fluid py-5">
-    <div class="row px-xl-5">
-      <div class="col-lg-5 pb-5">
-        <img class="w-100 h-100 object-fit-contain" src="/assets/img/winter.jpg" alt="ProductName">
-      </div>
+  @if (product == undefined) {
+    <div class="container-lg h-50-vh w-100">Loading</div>
+  } @else {
 
-      <div class="col-lg-7 pb-5">
-        <h3 class="font-weight-semi-bold">Colorful Stylish Shirt</h3>
-        <div class="d-flex mb-3">
-          <div class="text-secondary mr-2">
-            <small class="bi bi-star-fill"></small>
-            <small class="bi bi-star-fill"></small>
-            <small class="bi bi-star-fill"></small>
-            <small class="bi bi-star-half"></small>
-          </div>
-          <small class="pt-1">(50 Reviews)</small>
-        </div>
-        <h3 class="font-weight-semi-bold mb-4">$150.00</h3>
-        <p class="mb-4">Volup erat ipsum diam elitr rebum et dolor. Est nonumy elitr erat diam stet sit clita ea. Sanc
-          invidunt ipsum et, labore clita lorem magna lorem ut. Erat lorem duo dolor no sea nonumy. Accus labore stet,
-          est lorem sit diam sea et justo, amet at lorem et eirmod ipsum diam et rebum kasd rebum.</p>
-        <div class="d-flex mb-3">
-          <hr class="w-100">
-        </div>
-        <div class="d-flex mb-4">
-          <p>Description</p>
-          <p>Eos no lorem eirmod diam diam, eos elitr et gubergren diam sea. Consetetur vero aliquyam invidunt duo
-            dolores et duo sit. Vero diam ea vero et dolore rebum, dolor rebum eirmod consetetur invidunt sed sed et,
-            lorem duo et eos elitr, sadipscing kasd ipsum rebum diam. Dolore diam stet rebum sed tempor kasd eirmod.
-            Takimata kasd ipsum accusam sadipscing, eos dolores sit no ut diam consetetur duo justo est, sit sanctus
-            diam tempor aliquyam</p>
-        </div>
-        <div class="d-flex mb-3">
-          <hr class="w-100">
-        </div>
-        <div class="d-flex align-items-center mb-4 pt-2">
-          <div class="input-group quantity me-3" style="width: 130px;">
-            <div class="input-group-btn">
-              <button class="btn btn-outline-secondary">
-                <i class="bi bi-dash"></i>
-              </button>
-            </div>
-            <input type="text" class="form-control  text-center" value="1">
-            <div class="input-group-btn">
-              <button class="btn btn-outline-secondary">
-                <i class="bi bi-plus"></i>
-              </button>
-            </div>
-          </div>
-          <button class="btn btn-outline-secondary px-3"><i class="bi bi-shopping-cart mr-1"></i> Add To Cart</button>
+    <div class="container-lg py-5">
+      <div class="row px-xl-5">
+        <div class="col-lg-5 pb-5 " style="max-height: 75vh!important;">
+          <img class="h-100 w-100 object-fit-contain" [src]="product.image" alt="ProductName">
         </div>
 
+        <div class="col-lg-7 pb-5">
+          <h3 class="font-weight-semi-bold">{{ product?.title }}</h3>
+          <div class="d-flex mb-3">
+            <div class="text-secondary mr-2">
+              @for (star of fullStars; track $index) {
+                <small class="bi bi-star-fill "></small>
+              }
+              @if (hasHalfStar) {
+                <small class="bi bi-star-half "></small>
+              }
+            </div>
+            <small class="pt-1">({{ product.rating.count }} Reviews)</small>
+          </div>
+          <h3 class="font-weight-semi-bold mb-4">{{ product.price }}€</h3>
+          <p class="mb-4">{{ product.title }}</p>
+          <div class="d-flex mb-3">
+            <hr class="w-100">
+          </div>
+          <div class="d-flex mb-4">
+            <p>{{ product.description }}</p>
+          </div>
+          <div class="d-flex mb-3">
+            <hr class="w-100">
+          </div>
+          <div class="d-flex align-items-center mb-4 pt-2">
+            <div class="input-group quantity me-3" style="width: 130px;">
+              <div class="input-group-btn">
+                <button class="btn btn-outline-secondary" (click)="decreaseQuantity()">
+                  <i class="bi bi-dash"></i>
+                </button>
+              </div>
+              <input type="text" class="form-control  text-center" [value]="quantity">
+              <div class="input-group-btn">
+                <button class="btn btn-outline-secondary" (click)="increaseQuantity()">
+                  <i class="bi bi-plus"></i>
+                </button>
+              </div>
+            </div>
+            <button class="btn btn-outline-secondary px-3" (click)="addToCart()"><i class="bi bi-shopping-cart mr-1"></i> Add To Cart</button>
+          </div>
+
+        </div>
       </div>
     </div>
-  </div>
+  }
 </section>

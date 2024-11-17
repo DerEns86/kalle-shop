@@ -9,6 +9,8 @@ import { ProductInterface } from '../models/product.interface';
 export class ProductsService {
   http: HttpClient = inject(HttpClient);
 
+  private BASE_URL: string = 'https://fakestoreapi.com/';
+
   private productsSubject: BehaviorSubject<ProductInterface[]> =
     new BehaviorSubject<ProductInterface[]>([]);
   products$: Observable<ProductInterface[]> =
@@ -26,6 +28,10 @@ export class ProductsService {
         this.allProducts = products;
         this.updateDisplayedProducts();
       });
+  }
+
+  loadSingleProduct(id: string): Observable<ProductInterface> {
+    return this.http.get<ProductInterface>(this.BASE_URL + 'products/' + id);
   }
 
   loadMoreProducts(): void {
