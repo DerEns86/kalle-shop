@@ -1,0 +1,24 @@
+.section-title {
+  position: relative;
+  display: inline-block;
+  letter-spacing: 1px;
+  font-weight: bold;
+
+  span {
+    position: relative;
+    background: var(--bg-color);
+    z-index: 1;
+    font-family: var(--secondary-font), serif;
+  }
+
+  &::before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    margin-top: -1px;
+    background: #212529;
+  }
+}

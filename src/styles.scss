@@ -4,12 +4,12 @@
 :root {
   --primary-font: 'Jost', sans-serif;
   --secondary-font: 'Marcellus', sans-serif;
-  --bg-color: #e1e1e1;
+  --bg-color: #ededed;
 }
 
 html, body {
   font-family: var(--primary-font), serif !important;
-  background-color: var(--bg-color), serif !important;
+  background-color: var(--bg-color) !important;
 }
 
 h1 {

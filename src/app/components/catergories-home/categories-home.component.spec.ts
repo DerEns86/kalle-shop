@@ -1,25 +1,25 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { MainComponent } from './main.component';
-import { ProductsService } from '../../services/products.service';
+import { CategoriesHomeComponent } from './categories-home.component';
+import { CategoriesService } from '../../services/categories.service';
 import { provideHttpClient } from '@angular/common/http';
 import { provideHttpClientTesting } from '@angular/common/http/testing';
 
-describe('MainComponent', () => {
-  let component: MainComponent;
-  let fixture: ComponentFixture<MainComponent>;
+describe('CatergoriesHomeComponent', () => {
+  let component: CategoriesHomeComponent;
+  let fixture: ComponentFixture<CategoriesHomeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [MainComponent],
+      imports: [CategoriesHomeComponent],
       providers: [
-        ProductsService,
+        CategoriesService,
         provideHttpClient(),
         provideHttpClientTesting(),
       ],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(MainComponent);
+    fixture = TestBed.createComponent(CategoriesHomeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

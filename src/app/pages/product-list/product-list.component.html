@@ -1,5 +1,5 @@
 <section>
-  <div class="container-lg pt-5">
+  <div class="container-lg pt-5 pb-4">
     <div class="row px-xl-5 pb-3">
       @if (products$ | async; as products) {
         @for (product of products; track $index) {
@@ -7,10 +7,14 @@
             <app-product-card [product]="product"></app-product-card>
           </div>
         }
+      } @else {
+        <div class="col-12 col-md-6 mx-auto">
+          <p class="text-center text-bg-danger">No products found</p>
+        </div>
       }
     </div>
     <div class="row justify-content-center">
-      <button class="btn btn-light" (click)="loadMore()" [disabled]="!canLoadMore" style="max-width: 18rem">Load More
+      <button class="btn btn-dark" (click)="loadMore()" [disabled]="!canLoadMore" style="max-width: 18rem">Load More
       </button>
     </div>
   </div>

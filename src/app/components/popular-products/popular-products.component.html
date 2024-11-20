@@ -1,0 +1,15 @@
+<section>
+  <div class="text-center mb-4">
+    <h2 class="section-title px-5"><span class="px-2">Trendy Products</span></h2>
+  </div>
+
+  <div class="container-lg">
+    <div class="row justify-content-center text-center">
+      @for (product of dummyProducts; track product.id) {
+
+        <app-product-card [product]="product" class="col-lg-3 col-md-6 col-sm-12 pb-1"/>
+
+      }
+    </div>
+  </div>
+</section>

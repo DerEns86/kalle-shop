@@ -1,0 +1,57 @@
+<section>
+  @if (product == undefined) {
+    <div class="container-lg h-50-vh w-100">Loading</div>
+  } @else {
+
+    <div class="container-lg py-5">
+      <div class="row px-xl-5">
+        <div class="col-lg-5 pb-5 " style="max-height: 75vh!important;">
+          <img class="h-100 w-100 object-fit-contain" [src]="product.image" alt="ProductName">
+        </div>
+
+        <div class="col-lg-7 pb-5">
+          <h3 class="font-weight-semi-bold">{{ product.title }}</h3>
+          <div class="d-flex mb-3">
+            <div class="text-secondary mr-2">
+              @for (star of fullStars; track $index) {
+                <small class="bi bi-star-fill "></small>
+              }
+              @if (hasHalfStar) {
+                <small class="bi bi-star-half "></small>
+              }
+            </div>
+            <small class="pt-1">({{ product.rating.count }} Reviews)</small>
+          </div>
+          <h3 class="font-weight-semi-bold mb-4">{{ product.price }}€</h3>
+          <p class="mb-4">{{ product.title }}</p>
+          <div class="d-flex mb-3">
+            <hr class="w-100">
+          </div>
+          <div class="d-flex mb-4">
+            <p>{{ product.description }}</p>
+          </div>
+          <div class="d-flex mb-3">
+            <hr class="w-100">
+          </div>
+          <div class="d-flex align-items-center mb-4 pt-2">
+            <div class="input-group quantity me-3" style="width: 130px;">
+              <div class="input-group-btn">
+                <button class="btn btn-outline-secondary" (click)="decreaseQuantity()">
+                  <i class="bi bi-dash"></i>
+                </button>
+              </div>
+              <input type="text" class="form-control  text-center" [value]="quantity">
+              <div class="input-group-btn">
+                <button class="btn btn-outline-secondary" (click)="increaseQuantity()">
+                  <i class="bi bi-plus"></i>
+                </button>
+              </div>
+            </div>
+            <button class="btn btn-outline-secondary px-3" (click)="addToCart()"><i class="bi bi-shopping-cart mr-1"></i> Add To Cart</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  }
+</section>
