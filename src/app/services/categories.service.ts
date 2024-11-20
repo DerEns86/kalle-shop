@@ -11,13 +11,13 @@ export class CategoriesService {
   private categoriesSubject: BehaviorSubject<string[]> = new BehaviorSubject<
     string[]
   >([]);
-  products$: Observable<string[]> = this.categoriesSubject.asObservable();
+  categories$: Observable<string[]> = this.categoriesSubject.asObservable();
 
   loadCategories(): void {
     this.http
       .get<string[]>('https://fakestoreapi.com/products/categories')
       .subscribe({
-        next: (categories) => {
+        next: (categories: string[]) => {
           this.categoriesSubject.next(categories);
         },
         error: (err) => {

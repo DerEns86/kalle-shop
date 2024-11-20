@@ -20,7 +20,6 @@ export class ProductListComponent implements OnInit {
 
   ngOnInit(): void {
     this.products$ = this.productService.products$;
-    this.productService.loadAllProducts();
   }
 
   loadMore(): void {

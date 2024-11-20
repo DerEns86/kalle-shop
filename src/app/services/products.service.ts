@@ -47,4 +47,13 @@ export class ProductsService {
     const displayedProducts = this.allProducts.slice(0, this.displayCount);
     this.productsSubject.next(displayedProducts);
   }
+
+  loadProductsByCategory(category: string): void {
+    this.http
+      .get<ProductInterface[]>(this.BASE_URL + 'products/category/' + category)
+      .subscribe((products) => {
+        this.allProducts = products;
+        this.updateDisplayedProducts();
+      });
+  }
 }

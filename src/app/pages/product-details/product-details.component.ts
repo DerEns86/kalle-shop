@@ -12,7 +12,7 @@ import { take } from 'rxjs';
   styleUrl: './product-details.component.scss',
 })
 export class ProductDetailsComponent implements OnInit {
-  private productService: ProductsService = inject(ProductsService);
+  private readonly productService: ProductsService = inject(ProductsService);
   private readonly activatedRoute: ActivatedRoute = inject(ActivatedRoute);
 
   private productId: string | undefined;
