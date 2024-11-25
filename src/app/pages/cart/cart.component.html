@@ -1,0 +1,86 @@
+<div class="container-fluid pt-5">
+  <div class="row px-xl-5">
+    @if (cartService.cartSignal().length === 0){
+      <div class="col-lg-12 text-center mb-5">
+        <h2 class="font-weight-semi-bold">Your cart is empty</h2>
+        <a routerLink="/shop" class="btn btn-dark mt-3">Continue Shopping</a>
+      </div>
+    } @else {
+
+    <div class="col-lg-8 table-responsive mb-5">
+      <table class="table table-bordered text-center mb-0">
+        <thead class="bg-secondary text-dark">
+        <tr>
+          <th>Products</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
+          <th>Remove</th>
+        </tr>
+        </thead>
+        <tbody class="align-middle">
+
+          @for (cartItem of cartService.cartSignal(); track $index) {
+            <tr>
+              <td class="align-middle"><img [src]="cartItem.product.image" alt=""
+                                            style="width: 50px;"> {{ cartItem.product.title }}
+              </td>
+              <td class="align-middle">{{ cartItem.product.price | number: '1.2' }}</td>
+              <td class="align-middle">
+                <div class="input-group quantity mx-auto" style="width: 100px;">
+                  <div class="input-group-btn">
+                    <button class="btn btn-sm btn-outline-dark btn-minus" (click)="decreaseAmount($index)"
+                            [disabled]="cartItem.amount == 1"
+                    >
+                      <i class="bi bi-dash"></i>
+                    </button>
+                  </div>
+                  <input type="text" class="form-control form-control-sm text-center" [value]="cartItem.amount">
+                  <div class="input-group-btn">
+                    <button class="btn btn-sm btn-outline-dark btn-plus" (click)="increaseAmount($index)">
+                      <i class="bi bi-plus"></i>
+                    </button>
+                  </div>
+                </div>
+              </td>
+              <td class="align-middle">{{calculateItemTotal($index) | number: '1.2' }}</td>
+              <td class="align-middle">
+                <button class="btn btn-sm btn-outline-secondary" (click)="deleteItem($index)"><i class="bi bi-x-lg"></i>
+                </button>
+              </td>
+            </tr>
+          }
+
+        </tbody>
+
+      </table>
+    </div>
+    }
+
+    <div class="col-lg-4">
+
+      <div class="card border-secondary mb-5">
+        <div class="card-header bg-secondary border-0">
+          <h4 class="font-weight-semi-bold m-0">Cart Summary</h4>
+        </div>
+        <div class="card-body">
+          <div class="d-flex justify-content-between mb-3 pt-1">
+            <h6 class="font-weight-medium">Subtotal</h6>
+            <h6 class="font-weight-medium">{{calculateSubTotal() | number: '1.2' }}€</h6>
+          </div>
+          <div class="d-flex justify-content-between">
+            <h6 class="font-weight-medium">Shipping</h6>
+            <h6 class="font-weight-medium">{{shippingCost}}€</h6>
+          </div>
+        </div>
+        <div class="card-footer border-secondary bg-transparent">
+          <div class="d-flex justify-content-between mt-2">
+            <h5 class="font-weight-bold">Total</h5>
+            <h5 class="font-weight-bold">{{calculateTotal() | number: '1.2' }}€</h5>
+          </div>
+          <button class="btn btn-block btn-dark my-3 py-3" (click)="onCheckout()">Checkout</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

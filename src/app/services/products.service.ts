@@ -9,7 +9,7 @@ import { ProductInterface } from '../models/product.interface';
 export class ProductsService {
   http: HttpClient = inject(HttpClient);
 
-  private BASE_URL: string = 'https://fakestoreapi.com/';
+  private readonly BASE_URL: string = 'https://fakestoreapi.com/';
 
   private productsSubject: BehaviorSubject<ProductInterface[]> =
     new BehaviorSubject<ProductInterface[]>([]);
