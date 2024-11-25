@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { ProductsService } from '../../services/products.service';
 import { Observable } from 'rxjs';
 import { ProductInterface } from '../../models/product.interface';
-import { ProductListComponent } from '../product-list/product-list.component';
+import { ProductListComponent } from '../../components/product-list/product-list.component';
 
 @Component({
   selector: 'app-shop',
