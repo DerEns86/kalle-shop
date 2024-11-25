@@ -79,4 +79,72 @@ describe('CartService', () => {
       done();
     });
   });
+
+  it('should decrease the amount of a product', () => {
+    const product: ProductInterface = {
+      id: 1,
+      title: 'Product 1',
+      price: 100,
+      description: 'A test product',
+      category: 'test-category',
+      image: 'test-image',
+      rating: { rate: 4.5, count: 10 },
+    };
+
+    service.addProduct(product);
+    service.addProduct(product);
+    service.decreaseAmount(0);
+
+    const cart = service.cartSignal();
+    expect(cart.length).toBe(1);
+    expect(cart[0]).toEqual({ product, amount: 1 });
+  });
+
+  it('should increase the amount of a product', () => {
+    const product: ProductInterface = {
+      id: 1,
+      title: 'Product 1',
+      price: 100,
+      description: 'A test product',
+      category: 'test-category',
+      image: 'test-image',
+      rating: { rate: 4.5, count: 10 },
+    };
+
+    service.addProduct(product);
+    service.increaseAmount(0);
+
+    const cart = service.cartSignal();
+    expect(cart.length).toBe(1);
+    expect(cart[0]).toEqual({ product, amount: 2 });
+  });
+
+  it('should remove a product from the cart', () => {
+    const product1: ProductInterface = {
+      id: 1,
+      title: 'Product 1',
+      price: 100,
+      description: 'A test product',
+      category: 'test-category',
+      image: 'test-image',
+      rating: { rate: 4.5, count: 10 },
+    };
+    const product2: ProductInterface = {
+      id: 2,
+      title: 'Product 2',
+      price: 50,
+      description: 'Another test product',
+      category: 'test-category',
+      image: 'test-image',
+      rating: { rate: 4.0, count: 20 },
+    };
+
+    service.addProduct(product1);
+    service.addProduct(product2);
+    service.removeProduct(0);
+
+    const cart = service.cartSignal();
+    expect(cart.length).toBe(1);
+    expect(cart[0]).toEqual({ product: product2, amount: 1 });
+  });
 });
