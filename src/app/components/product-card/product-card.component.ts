@@ -17,6 +17,5 @@ export class ProductCardComponent {
 
   onAddProduct(product: ProductInterface) {
     this.cartService.addProduct(product);
-    console.log(this.cartService.cartSignal());
   }
 }
